@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Matches },
       { path: "matches", Component: Matches },
-      { path: "matches/:name", Component: MatchDetail },
+      { path: "match/:id", Component: MatchDetail },
     ],
   },
 ]);

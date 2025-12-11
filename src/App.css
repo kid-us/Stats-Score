@@ -1,3 +1,31 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes dance-bar {
+  0% {
+    transform: translateX(0) scaleX(0.1);
+    transform-origin: left center;
+  }
+  25% {
+    transform: translateX(0) scaleX(1);
+    transform-origin: left center;
+  }
+  50% {
+    transform: translateX(100%) scaleX(0.1);
+    transform-origin: right center;
+  }
+  75% {
+    transform: translateX(100%) scaleX(1);
+    transform-origin: right center;
+  }
+  100% {
+    transform: translateX(0) scaleX(0.1);
+    transform-origin: left center;
+  }
+}
+
+.slide-bar {
+  border-radius: 9999px;
+  animation: dance-bar 2s ease-in-out infinite;
+}

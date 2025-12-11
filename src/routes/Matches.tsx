@@ -1,7 +1,8 @@
 import { arsenal, calendar } from "@/assets/images";
+import MatchCard from "@/components/MatchCard";
 import { Button } from "@/components/ui/button";
+import { useGetMatches } from "@/hooks/useGetMatches";
 import {
-  Check,
   ChevronLeft,
   ChevronRight,
   EllipsisVertical,
@@ -19,6 +20,11 @@ const tabs: { name: string; value: number; icon?: LucideIcon }[] = [
 
 const Contact = () => {
   const [activeTab, setActiveTab] = useState<string>("All");
+
+  // Premier League Data
+  const { data: pl } = useGetMatches("PL", "16");
+  // Champions League Data
+  const { data: cl } = useGetMatches("CL", "6");
 
   return (
     <div className="lg:space-y-4">
@@ -71,106 +77,11 @@ const Contact = () => {
           ))}
         </div>
 
-        {/* Ended Match */}
-        <div className="rounded-xl bg-card p-4 space-y-3">
-          <div className="flex justify-between">
-            <h1 className="text-[14px]">UEFA Champions League</h1>
-            <ChevronRight className="w-[18px] h-[18px]" />
-          </div>
+        {/* Champions League */}
+        {cl && <MatchCard data={cl} />}
 
-          {/* First Match with Agg */}
-          <div className="flex h-[76px] items-center p-2 border-l-5 border-destructive">
-            <p className="text-destructive w-14 flex justify-center text-[12px]">
-              FT
-            </p>
-            <div className="flex justify-between w-full">
-              {/* Teams */}
-              <div className="space-y-2 p-2 items-center">
-                <div className="flex items-center gap-2">
-                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
-                  <div className="flex gap-2">
-                    <p className="text-[12px]">Arsenal</p>
-                    <p className="flex items-center justify-center gap-0.5 bg-[#26273B] text-primary rounded-full px-2 py-1 text-[8px]">
-                      <Check className="w-[11px] h-[11px]" />
-                      AGG
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
-                  <div className="flex gap-2">
-                    <p className="text-[12px]">Valencia</p>
-                    <p className="flex items-center justify-center gap-0.5 bg-[#26273B] text-primary rounded-full px-2 py-1 text-[8px] uppercase]">
-                      <Check className="w-[11px] h-[11px]" />
-                      Pen
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Score */}
-              <div className="flex items-center space-y-2 p-2 gap-2">
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-[#6B7280] text-[11px]">[2]</p>
-                  <p className="text-[#6B7280] text-[11px]">[0]</p>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-[11px]">2</p>
-                  <p className="text-[11px]">0</p>
-                </div>
-                <EllipsisVertical className="w-4 h-4" />
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-[#292B41]" />
-
-          {/* First Match with Agg */}
-          <div className="flex h-[76px] items-center p-2 border-l-5 border-destructive">
-            <p className="text-destructive w-14 flex justify-center text-[12px]">
-              FT
-            </p>
-            <div className="flex justify-between w-full">
-              {/* Teams */}
-              <div className="space-y-2 p-2 items-center">
-                <div className="flex items-center gap-2">
-                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
-                  <div className="flex gap-2 items-center">
-                    <p className="text-[12px]">Arsenal</p>
-                    <p className="rotate-12 w-1.5 h-2 rounded-[1px] bg-destructive"></p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
-                  <div className="flex gap-2">
-                    <p className="text-[12px]">Valencia</p>
-                    <p className="flex items-center justify-center gap-0.5 bg-[#26273B] text-primary rounded-full px-2 py-1 text-[8px] uppercase]">
-                      <Check className="w-[11px] h-[11px]" />
-                      Pen
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Score */}
-              <div className="flex items-center space-y-2 p-2 gap-2">
-                {/* Aggregate Score */}
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-[#6B7280] text-[11px]">[2]</p>
-                  <p className="text-[#6B7280] text-[11px]">[0]</p>
-                </div>
-                {/* Latest Score */}
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-[11px]">2</p>
-                  <p className="text-[11px]">0</p>
-                </div>
-                <EllipsisVertical className="w-4 h-4" />
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-[#292B41]" />
-        </div>
+        {/* Premier League */}
+        {pl && <MatchCard data={pl} />}
 
         {/* Live and Upcoming Matches Matches */}
         <div className="rounded-xl bg-card p-4 space-y-3">
@@ -180,10 +91,12 @@ const Contact = () => {
           </div>
 
           {/* Live */}
-          <div className="flex h-[76px] items-center pe-2 py-2 border-l-5 border-primary">
+          <div className="flex h-[76px] hover:bg-background transition-colors duration-500 items-center py-2 border-l-5 border-primary">
             <div className="flex flex-col w-14 ps-2 justify-center items-center bg-linear-to-r from-primary/10 h-[76px]">
               <p className="text-primary text-[12px]">63'</p>
-              <p className="w-4 h-0.5 rounded-[100px] mt-1 bg-primary"></p>
+              <div className="w-4 overflow-hidden">
+                <p className="w-4 h-0.5 rounded-[100px] mt-1 bg-primary slide-bar"></p>
+              </div>
             </div>
             <div className="flex justify-between w-full">
               {/* Teams */}
@@ -192,67 +105,23 @@ const Contact = () => {
                   <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
                   <div className="flex gap-2">
                     <p className="text-[12px]">Arsenal</p>
-                    <p className="flex items-center justify-center gap-0.5 bg-[#26273B] text-primary rounded-full px-2 py-1 text-[8px]">
-                      <Check className="w-[11px] h-[11px]" />
-                      AGG
-                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
                   <div className="flex gap-2">
                     <p className="text-[12px]">Valencia</p>
-                    <p className="flex items-center justify-center gap-0.5 bg-[#26273B] text-primary rounded-full px-2 py-1 text-[8px] uppercase]">
-                      <Check className="w-[11px] h-[11px]" />
-                      Pen
-                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Score */}
-              <div className="flex items-center space-y-2 p-2 gap-2">
+              <div className="flex items-center space-y-2 gap-2">
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-[11px]">2</p>
                   <p className="text-[11px]">0</p>
                 </div>
-                <EllipsisVertical className="w-4 h-4" />
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-[#292B41]" />
-
-          {/* Upcoming */}
-          <div className="flex h-[76px] items-center p-2 border-l-5 border-[#374151]">
-            <p className="text-white w-14 flex justify-center text-[12px]">
-              23:00
-            </p>
-            <div className="flex justify-between w-full">
-              {/* Teams */}
-              <div className="space-y-2 p-2 items-center">
-                <div className="flex items-center gap-2">
-                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
-                  <div className="flex gap-2 items-center">
-                    <p className="text-[12px]">Arsenal</p>
-                    <p className="rotate-12 w-1.5 h-2 rounded-[1px] bg-destructive"></p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
-                  <div className="flex gap-2">
-                    <p className="text-[12px]">Valencia</p>
-                    <p className="flex items-center justify-center gap-0.5 bg-[#26273B] text-primary rounded-full px-2 py-1 text-[8px] uppercase]">
-                      <Check className="w-[11px] h-[11px]" />
-                      Pen
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Score */}
-              <div className="flex items-center space-y-2 p-2 gap-2">
-                <EllipsisVertical className="w-4 h-4" />
+                <EllipsisVertical className="w-4 h-4 ms-2" />
               </div>
             </div>
           </div>
