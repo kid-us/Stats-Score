@@ -5,6 +5,7 @@ import calendar from "./calendar.svg";
 import cornerFlag from "./corner-flag.svg";
 import englandFlag from "./england-flag.svg";
 import heart from "./heart.svg";
+import leftArrow from "./leftArrow.svg";
 import live from "./live.svg";
 import logo from "./logo.svg";
 import offThePost from "./off-the-post.svg";
@@ -21,6 +22,7 @@ export {
   cornerFlag,
   englandFlag,
   heart,
+  leftArrow,
   live,
   logo,
   offThePost,

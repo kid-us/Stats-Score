@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "./routes/Home";
 import Matches from "./routes/Matches";
-import EventDetail from "./routes/EventDetail";
+import MatchDetail from "./routes/MatchDetail";
 import layout from "./components/layout";
 
 export const router = createBrowserRouter([
@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "matches", Component: Matches },
-      { path: "matches/:name", Component: EventDetail },
+      { path: "matches/:name", Component: MatchDetail },
     ],
   },
 ]);

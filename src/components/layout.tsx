@@ -5,7 +5,7 @@ const layout = () => {
   return (
     <main>
       <Navbar />
-      <div className="py-4 max-w-[820px] mx-auto">
+      <div className="lg:py-4 max-w-[820px] mx-auto">
         <Outlet />
       </div>
     </main>
