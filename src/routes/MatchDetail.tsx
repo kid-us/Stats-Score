@@ -1,4 +1,6 @@
-import { arsenal, leftArrow, substitution } from "@/assets/images";
+import { arsenal, leftArrow } from "@/assets/images";
+import MatchTimeline from "@/components/MatchTimeline";
+import type { TimelineItem } from "@/types/match-timeline-types";
 import { useState } from "react";
 
 const tabs: string[] = [
@@ -12,9 +14,85 @@ const tabs: string[] = [
 
 const MatchDetail = () => {
   const [activeTab, setActiveTab] = useState("Events");
+
+  const matchTimeline: TimelineItem[] = [
+    {
+      id: 0,
+      type: "divider",
+      label: "Fulltime ‘ 2 - 1",
+    },
+    {
+      id: 1,
+      type: "event",
+      eventType: "substitution",
+      minute: "89’",
+      side: "home",
+      player: "Gyokores",
+      assist: "Odegard",
+    },
+    {
+      id: 2,
+      type: "event",
+      eventType: "goal",
+      minute: "82’",
+      side: "home",
+      player: "Saka",
+      assist: "Rice",
+    },
+    {
+      id: 3,
+      type: "event",
+      eventType: "yellow",
+      minute: "75’",
+      side: "away",
+      player: "Konate",
+    },
+
+    // Divider
+    {
+      id: 10,
+      type: "divider",
+      label: "Halftime ‘ 2 - 1",
+    },
+
+    {
+      id: 1,
+      type: "event",
+      eventType: "substitution",
+      minute: "89’",
+      side: "home",
+      player: "Gyokores",
+      assist: "Odegard",
+    },
+    {
+      id: 2,
+      type: "event",
+      eventType: "goal",
+      minute: "82’",
+      side: "home",
+      player: "Saka",
+      assist: "Rice",
+    },
+    {
+      id: 3,
+      type: "event",
+      eventType: "yellow",
+      minute: "75’",
+      side: "away",
+      player: "Konate",
+    },
+
+    // Divider
+    {
+      id: 11,
+      type: "divider",
+      label: "Kickoff ‘ 13:00",
+    },
+  ];
+
   return (
     <div className="space-y-4">
-      <div className="bg-card lg:rounded-xl px-4 py-2 space-y-8">
+      <div className="bg-card lg:rounded-xl px-4 md:py-2 py-4 space-y-8">
         <div className="flex items-center gap-4">
           <img src={leftArrow} alt="Left Arrow" className="w-6 h-6" />
           <p className="text-[14px]">English Premier League</p>
@@ -57,13 +135,13 @@ const MatchDetail = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex flex-nowrap no-scrollbar overflow-x-scroll md:justify-center items-center gap-4">
           {tabs.map((t) => (
             <button
               onClick={() => setActiveTab(t)}
               className={`p-2 text-[14px] ${
                 activeTab === t
-                  ? "underline underline-offset-8 decoration-2 decoration-primary"
+                  ? "underline underline-offset-12 md:underline-offset-8 decoration-2 decoration-primary"
                   : ""
               } `}
             >
@@ -73,123 +151,15 @@ const MatchDetail = () => {
         </div>
       </div>
 
-      <div className="rounded-xl bg-card px-4 py-2">
-        <div className="py-2">
-          <p className="text-[14px]">{activeTab}</p>
-        </div>
-
-        <div className="space-y-4">
-          {/* Full Time */}
-          <div className="flex items-center justify-center w-full">
-            <hr className="border-[#292B41] w-full"></hr>
-            <p className="text-[12px] w-1/2 text-center">
-              Fulltime <span className="ms-3">2</span> -{" "}
-              <span className="">1</span>
-            </p>
-            <hr className="border-[#292B41] w-full"></hr>
+      <div className="px-4">
+        <div className="rounded-lg bg-card px-4 md:py-2 py-4">
+          <div className="py-2">
+            <p className="text-[14px]">{activeTab}</p>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-center w-full gap-2">
-              <div className="flex w-1/3 items-center justify-end gap-3">
-                <div className="">
-                  <p className="text-[12px]">Gyokores</p>
-                  <p className="text-[12px] text-[#6B7280]">Odegard</p>
-                </div>
-                <img
-                  src={substitution}
-                  alt="Substitution"
-                  className="w-3 h-3"
-                />
-                <hr className="border-[#292B41] w-8"></hr>
-              </div>
-              <p className="text-[12px] w-12 bg-[#26273B] text-center rounded-full py-0.5 px-2">
-                89’
-              </p>
-              <hr className="border-transparent w-1/3"></hr>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center justify-center w-full gap-2">
-              <div className="flex w-1/3 items-center justify-end gap-3">
-                <div className="">
-                  <p className="text-[12px]">Gyokores</p>
-                  <p className="text-[12px] text-[#6B7280]">Odegard</p>
-                </div>
-                <img
-                  src={substitution}
-                  alt="Substitution"
-                  className="w-3 h-3"
-                />
-                <hr className="border-[#292B41] w-8"></hr>
-              </div>
-              <p className="text-[12px] w-12 bg-[#26273B] text-center rounded-full py-0.5 px-2">
-                89’
-              </p>
-              <hr className="border-transparent w-1/3"></hr>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center justify-center w-full gap-2">
-              <div className="flex w-1/3 items-center justify-end gap-3">
-                <div className="">
-                  <p className="text-[12px]">Gyokores</p>
-                  <p className="text-[12px] text-[#6B7280]">Odegard</p>
-                </div>
-                <img
-                  src={substitution}
-                  alt="Substitution"
-                  className="w-3 h-3"
-                />
-                <hr className="border-[#292B41] w-8"></hr>
-              </div>
-              <p className="text-[12px] w-12 bg-[#26273B] text-center rounded-full py-0.5 px-2">
-                89’
-              </p>
-              <hr className="border-transparent w-1/3"></hr>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center justify-center w-full gap-2">
-              <div className="flex w-1/3 items-center justify-end gap-3">
-                <div className="">
-                  <p className="text-[12px]">Gyokores</p>
-                  <p className="text-[12px] text-[#6B7280]">Odegard</p>
-                </div>
-                <img
-                  src={substitution}
-                  alt="Substitution"
-                  className="w-3 h-3"
-                />
-                <hr className="border-[#292B41] w-8"></hr>
-              </div>
-              <p className="text-[12px] w-12 bg-[#26273B] text-center rounded-full py-0.5 px-2">
-                89’
-              </p>
-              <hr className="border-transparent w-1/3"></hr>
-            </div>
-          </div>
-
-          {/* Half Time */}
-          <div className="flex items-center justify-center w-full">
-            <hr className="border-[#292B41] w-full"></hr>
-            <p className="text-[12px] w-1/2 text-center">
-              Halftime' <span className="ms-3">2</span> -{" "}
-              <span className="">1</span>
-            </p>
-            <hr className="border-[#292B41] w-full"></hr>
-          </div>
-
-          {/* Kickoff */}
-          <div className="flex items-center justify-center w-full">
-            <hr className="border-[#292B41] w-full"></hr>
-            <p className="text-[12px] w-1/2 text-center">
-              Kickoff - <span>13:00 </span>
-            </p>
-            <hr className="border-[#292B41] w-full"></hr>
+          <div className="space-y-4">
+            {/* Match Event */}
+            <MatchTimeline timeline={matchTimeline} />
           </div>
         </div>
       </div>
