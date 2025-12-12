@@ -2,6 +2,7 @@ import arsenal from "./arsenal.svg";
 import ball from "./ball.svg";
 import ball2 from "./ball-2.svg";
 import calendar from "./calendar.svg";
+import coloredCalendar from "./colored-calendar.svg";
 import cornerFlag from "./corner-flag.svg";
 import englandFlag from "./england-flag.svg";
 import heart from "./heart.svg";
@@ -20,6 +21,7 @@ export {
   ball,
   ball2,
   calendar,
+  coloredCalendar,
   cornerFlag,
   englandFlag,
   heart,

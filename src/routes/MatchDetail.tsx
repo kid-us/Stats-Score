@@ -255,7 +255,7 @@ const MatchDetail = () => {
               {tabs.map((t) => (
                 <button
                   onClick={() => setActiveTab(t)}
-                  className={`p-2 text-[14px] ${
+                  className={`p-2 text-[12px] md:text-[14px] ${
                     activeTab === t
                       ? "underline underline-offset-12 md:underline-offset-8 decoration-2 decoration-primary"
                       : ""

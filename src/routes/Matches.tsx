@@ -1,5 +1,6 @@
 import { arsenal, calendar } from "@/assets/images";
 import MatchCard from "@/components/MatchCard";
+import ScrollableCalendar from "@/components/ScrollableCaledar";
 import { Button } from "@/components/ui/button";
 import { useGetMatches } from "@/hooks/useGetMatches";
 import {
@@ -31,7 +32,8 @@ const Contact = () => {
       <p className="text-[20px] lg:block hidden">Matches</p>
 
       {/* Calendar */}
-      <div className="flex justify-between items-center bg-card py-2 px-4 h-14 rounded-xl">
+      {/* Large and Medium Device Calendar */}
+      <div className="md:flex hidden justify-between items-center bg-card py-2 px-4 h-14 rounded-xl">
         <button>
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -44,6 +46,11 @@ const Contact = () => {
         <button>
           <ChevronRight className="w-5 h-5" />
         </button>
+      </div>
+
+      {/* Small Device Calendar */}
+      <div className="no-scrollbar">
+        <ScrollableCalendar />
       </div>
 
       <div className="space-y-4 p-4">
