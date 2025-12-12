@@ -267,7 +267,8 @@ const MatchDetail = () => {
             </div>
           </div>
 
-          <div className="px-4">
+          {/* Events */}
+          <div className="md:px-0 px-4">
             <div className="rounded-lg bg-card px-4 md:py-2 py-4">
               <div className="py-2">
                 <p className="text-[14px]">{activeTab}</p>

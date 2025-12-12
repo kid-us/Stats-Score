@@ -49,7 +49,7 @@ const Contact = () => {
       </div>
 
       {/* Small Device Calendar */}
-      <div className="no-scrollbar">
+      <div className="md:hidden">
         <ScrollableCalendar />
       </div>
 
