@@ -12,9 +12,10 @@ export const getCompetitionDetails = async ({
   limit?: number;
 }): Promise<CompetitionMatchesResponse> => {
   const token = import.meta.env.VITE_ACCESS_TOKEN;
+  const baseUrl = import.meta.env.VITE_VITE_API_URL;
 
   const res = await axios.get(
-    `/api/competitions/${competition}/matches?matchday=${matchDay}&limit=${limit}`,
+    `${baseUrl}/competitions/${competition}/matches?matchday=${matchDay}&limit=${limit}`,
     {
       headers: {
         "X-Auth-Token": token,
