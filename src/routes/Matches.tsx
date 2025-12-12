@@ -23,7 +23,7 @@ const Contact = () => {
   const [activeTab, setActiveTab] = useState<string>("All");
 
   // Premier League Data
-  const { data: pl, isLoading: isPLLoading } = useGetMatches("PL", "16");
+  const { data: pl, isLoading: isPLLoading } = useGetMatches("PL", "17");
 
   // console.log(pl);
 
