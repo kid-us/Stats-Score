@@ -12,7 +12,10 @@ export default async function handler(req: any, res: any) {
     const baseUrl = process.env.VITE_API_URL;
 
     const response = await axios.get(`${baseUrl}/matches/${id}`, {
-      headers: { "X-Auth-Token": token },
+      headers: {
+        "X-Auth-Token": token,
+        "Cache-Control": "no-cache", // prevent 304 responses
+      },
     });
 
     return res.status(200).json(response.data);

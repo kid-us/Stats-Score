@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default async function handler(req: any, res: any) {
   try {
-    const { competition, matchDay, limit = 5 } = req.query;
+    const { competition } = req.query;
+    const { matchDay, limit = 5 } = req.query;
 
     if (!competition || !matchDay) {
       return res.status(400).json({ error: "Missing competition or matchDay" });
@@ -15,7 +16,10 @@ export default async function handler(req: any, res: any) {
       `${baseUrl}/competitions/${competition}/matches`,
       {
         params: { matchday: matchDay, limit },
-        headers: { "X-Auth-Token": token },
+        headers: {
+          "X-Auth-Token": token,
+          "Cache-Control": "no-cache", // prevent 304 responses
+        },
       }
     );
 
