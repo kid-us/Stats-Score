@@ -25,8 +25,6 @@ const Contact = () => {
   // Premier League Data
   const { data: pl, isLoading: isPLLoading } = useGetMatches("PL", "16");
 
-  console.log(pl);
-
   // Champions League Data
   const { data: cl, isLoading: isCLLoading } = useGetMatches("CL", "6");
 
@@ -105,7 +103,7 @@ const Contact = () => {
         </div>
 
         {/* Champions League */}
-        {/* {cl && <MatchCard data={cl} />}
+        {cl && <MatchCard data={cl} />}
 
         {/* Premier League */}
         {pl && <MatchCard data={pl} hasLive />}
