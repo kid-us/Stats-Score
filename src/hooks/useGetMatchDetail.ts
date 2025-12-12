@@ -8,8 +8,9 @@ export const getMatchDetails = async ({
   id: string;
 }): Promise<Match> => {
   const token = import.meta.env.VITE_ACCESS_TOKEN;
+  const baseURL = import.meta.env.VITE_API_URL;
 
-  const res = await axios.get(`/api/matches/${id}`, {
+  const res = await axios.get(`${baseURL}/matches/${id}`, {
     headers: {
       "X-Auth-Token": token,
     },
