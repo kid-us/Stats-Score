@@ -1,5 +1,5 @@
 import { calendar } from "@/assets/images";
-// import MatchCard from "@/components/MatchCard";
+import MatchCard from "@/components/MatchCard";
 import ScrollableCalendar from "@/components/ScrollableCaledar";
 import { Button } from "@/components/ui/button";
 import { useGetMatches } from "@/hooks/useGetMatches";
@@ -25,11 +25,11 @@ const Contact = () => {
   // Premier League Data
   const { data: pl, isLoading: isPLLoading } = useGetMatches("PL", "16");
 
-  console.log(pl);
+  // console.log(pl);
 
   // Champions League Data
   const { data: cl, isLoading: isCLLoading } = useGetMatches("CL", "6");
-  console.log(cl);
+  // console.log(cl);
 
   if (isCLLoading || isPLLoading) {
     return (
@@ -106,10 +106,10 @@ const Contact = () => {
         </div>
 
         {/* Champions League */}
-        {/* {cl && <MatchCard data={cl} />} */}
+        {cl && <MatchCard data={cl} />}
 
         {/* Premier League */}
-        {/* {pl && <MatchCard data={pl} hasLive />} */}
+        {pl && <MatchCard data={pl} hasLive />}
       </div>
     </div>
   );
