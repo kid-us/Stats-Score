@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
           secure: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
           configure: (proxy, _options) => {
-            proxy.on("proxyReq", (proxyReq, req, _res) => {
+            proxy.on("proxyReq", (proxyReq, _res) => {
               // Add the authentication header
               if (apiToken) {
                 proxyReq.setHeader("X-Auth-Token", apiToken);
