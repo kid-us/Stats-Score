@@ -1,73 +1,140 @@
-# React + TypeScript + Vite
+# StatsScore
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern football match tracking application built with React, TypeScript, and Vite. StatsScore displays live and upcoming matches from major football competitions including the Premier League and Champions League, with detailed match information and event timelines.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View matches from Premier League and Champions League
+- Match details with scores, teams, and competition information
+- Scrollable calendar for match dates
+- Live match updates
+- Modern, responsive UI built with Tailwind CSS
+- Real-time data fetching with React Query
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **React Router** - Routing
+- **TanStack Query (React Query)** - Data fetching and caching
+- **Axios** - HTTP client
+- **Tailwind CSS** - Styling
+- **Radix UI** - Accessible component primitives
 
-## Expanding the ESLint configuration
+## API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project uses the **Football Data API** to fetch match data. The API provides comprehensive football data including:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Competition matches
+- Match details
+- Team information
+- Scores and statistics
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### API Endpoints Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `GET /competitions/{competition}/matches` - Get matches for a specific competition
+- `GET /matches/{id}` - Get detailed information about a specific match
+
+### API Rate Limit
+
+⚠️ **Important**: The API has a rate limit of **10 requests per minute**. Please be mindful of this limit when using the application. The app uses React Query's caching to minimize unnecessary API calls.
+
+### API Authentication
+
+The API requires authentication using an access token. You'll need to:
+
+1. Sign up at [Football Data API](https://www.football-data.org/)
+2. Get your API access token
+3. Configure it in your environment variables (see Setup section)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd StatsScore
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Create a `.env` file in the root directory:
+```env
+VITE_ACCESS_TOKEN=your_api_access_token_here
+VITE_API_URL=https://api.football-data.org/v4
+```
+
+Replace `your_api_access_token_here` with your actual Football Data API access token.
+
+4. Start the development server:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173` (or the port shown in your terminal).
+
+### Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint to check code quality
+
+## Project Structure
+
+```
+StatsScore/
+├── src/
+│   ├── assets/          # Images and static assets
+│   ├── components/       # React components
+│   │   ├── ui/          # Reusable UI components
+│   │   └── ...          # Feature components
+│   ├── constants/       # Constants and configuration
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   ├── routes/          # Page components
+│   ├── types/           # TypeScript type definitions
+│   └── main.tsx         # Application entry point
+├── public/              # Public assets
+├── package.json         # Dependencies and scripts
+└── vite.config.ts       # Vite configuration
+```
+
+## Usage
+
+1. **View Matches**: Navigate to the matches page to see all available matches from Premier League and Champions League.
+
+2. **Filter Matches**: Use the tabs (All, Live, Favorites) to filter matches by status.
+
+3. **View Match Details**: Click on any match card to see detailed information including:
+   - Match timeline with events
+   - Team information
+   - Scores and statistics
+   - Competition details
+
+4. **Navigate Dates**: Use the calendar component to navigate between different match days.
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_ACCESS_TOKEN` | Your Football Data API access token | Yes |
+| `VITE_API_URL` | The base URL for the Football Data API | Yes |
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the MIT License.
