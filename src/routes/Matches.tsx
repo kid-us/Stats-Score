@@ -71,7 +71,10 @@ const Contact = () => {
             <Button
               key={t.name}
               onClick={() => setActiveTab(t.name)}
-              className={`flex gap-2 py-2 px-3 h-full hover:bg-transparent hover:text-lime-200 text-[14px] ${
+              className={`flex gap-2 group py-2 px-3 h-full ${
+                activeTab !== t.name &&
+                "hover:bg-transparent hover:text-lime-300"
+              } text-[14px] ${
                 activeTab === t.name ? "bg-primary text-black" : "bg-card"
               }`}
             >
