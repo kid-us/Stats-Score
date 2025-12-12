@@ -105,7 +105,7 @@ const Contact = () => {
         </div>
 
         {/* Champions League */}
-        {cl && <MatchCard data={cl} />}
+        {/* {cl && <MatchCard data={cl} />}
 
         {/* Premier League */}
         {pl && <MatchCard data={pl} hasLive />}

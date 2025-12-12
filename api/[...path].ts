@@ -20,7 +20,8 @@ export default async function handler(req: any, res: any) {
 
   try {
     const token = process.env.VITE_ACCESS_TOKEN;
-    const baseUrl = process.env.VITE_API_URL || "https://api.football-data.org/v4";
+    const baseUrl =
+      process.env.VITE_API_URL || "https://api.football-data.org/v4";
 
     if (!token) {
       console.error("API token not configured");
@@ -91,10 +92,7 @@ export default async function handler(req: any, res: any) {
     });
     const status = error.response?.status || 500;
     const message =
-      error.response?.data?.message ||
-      error.message ||
-      "Failed to fetch data";
+      error.response?.data?.message || error.message || "Failed to fetch data";
     return res.status(status).json({ error: message });
   }
 }
-
