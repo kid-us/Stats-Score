@@ -13,3 +13,13 @@ export function formatTime(isoString: string, local = false): string {
     return `${hours}:${minutes}`;
   }
 }
+
+export function getMinute(isoString: string, local = false): string {
+  const date = new Date(isoString);
+
+  if (local) {
+    return date.getMinutes().toString().padStart(2, "0");
+  } else {
+    return date.getUTCMinutes().toString().padStart(2, "0");
+  }
+}

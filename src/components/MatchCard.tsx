@@ -1,5 +1,5 @@
 import { arsenal, manCity } from "@/assets/images";
-import { formatTime } from "@/lib/formatDate";
+import { formatTime, getMinute } from "@/lib/formatDate";
 import type { CompetitionMatchesResponse } from "@/types/matches-types";
 import { Check, ChevronRight, EllipsisVertical } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -80,8 +80,10 @@ const MatchCard = ({ data, hasLive }: Props) => {
               </p>
             ) : (
               <div className="flex flex-col w-14 ps-2 justify-center items-center bg-linear-to-r from-primary/10 h-[76px]">
-                <p className="text-primary text-[12px]">63'</p>
-                <p className="w-4 h-0.5 rounded-[100px] mt-1 bg-primary"></p>
+                <p className="text-primary text-[12px]">
+                  {getMinute(match.utcDate)}'
+                </p>
+                <p className="w-4 h-0.5 rounded-[100px] mt-1 bg-primary slide-bar"></p>
               </div>
             )}
 
