@@ -1,5 +1,5 @@
 import { calendar } from "@/assets/images";
-import MatchCard from "@/components/MatchCard";
+// import MatchCard from "@/components/MatchCard";
 import ScrollableCalendar from "@/components/ScrollableCaledar";
 import { Button } from "@/components/ui/button";
 import { useGetMatches } from "@/hooks/useGetMatches";
@@ -29,6 +29,7 @@ const Contact = () => {
 
   // Champions League Data
   const { data: cl, isLoading: isCLLoading } = useGetMatches("CL", "6");
+  console.log(cl);
 
   if (isCLLoading || isPLLoading) {
     return (
