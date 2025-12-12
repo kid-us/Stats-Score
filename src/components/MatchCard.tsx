@@ -1,3 +1,4 @@
+import { arsenal, manCity } from "@/assets/images";
 import { formatTime } from "@/lib/formatDate";
 import type { CompetitionMatchesResponse } from "@/types/matches-types";
 import { Check, ChevronRight, EllipsisVertical } from "lucide-react";
@@ -5,15 +6,58 @@ import { Link } from "react-router-dom";
 
 interface Props {
   data: CompetitionMatchesResponse;
+  hasLive?: boolean;
 }
 
-const MatchCard = ({ data }: Props) => {
+const MatchCard = ({ data, hasLive }: Props) => {
   return (
     <div className="rounded-xl bg-card p-4 space-y-3">
       <div className="flex justify-between">
         <h1 className="text-[14px]">{data.competition.name}</h1>
         <ChevronRight className="w-[18px] h-[18px]" />
       </div>
+
+      {/* Live */}
+      {hasLive && (
+        <Link to={`/match/537828`}>
+          <div className="flex h-[76px] hover:bg-background transition-colors duration-500 items-center py-2 border-l-5 border-primary">
+            <div className="flex flex-col w-14 ps-2 justify-center items-center bg-linear-to-r from-primary/10 h-[76px]">
+              <p className="text-primary text-[12px]">63'</p>
+              <div className="w-4 overflow-hidden">
+                <p className="w-4 h-0.5 rounded-[100px] mt-1 bg-primary slide-bar"></p>
+              </div>
+            </div>
+            <div className="flex justify-between w-full">
+              {/* Teams */}
+              <div className="space-y-2 p-2 items-center">
+                <div className="flex items-center gap-2">
+                  <img src={arsenal} alt="Arsenal" className="w-4 h-4" />
+                  <div className="flex gap-2">
+                    <p className="text-[12px]">Arsenal</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <img src={manCity} alt="Arsenal" className="w-4 h-4" />
+                  <div className="flex gap-2">
+                    <p className="text-[12px]">Manchester City</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Score */}
+              <div className="flex items-center space-y-2 gap-2">
+                <div className="flex flex-col items-center gap-2">
+                  <p className="text-[11px]">1</p>
+                  <p className="text-[11px]">1</p>
+                </div>
+                <EllipsisVertical className="w-4 h-4 ms-2" />
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-[#292B41]" />
+        </Link>
+      )}
 
       {data.matches.slice(0, 3).map((match, index) => (
         <Link key={match.id} to={`/match/${match.id}`} className="space-y-3">

@@ -10,6 +10,7 @@ import injury from "./injury.png";
 import leftArrow from "./leftArrow.svg";
 import live from "./live.svg";
 import logo from "./logo.svg";
+import manCity from "./man-city.svg";
 import offThePost from "./off-the-post.svg";
 import substitution from "./substitution.svg";
 import redCard from "./red-card.svg";
@@ -29,6 +30,7 @@ export {
   leftArrow,
   live,
   logo,
+  manCity,
   offThePost,
   redCard,
   substitution,

@@ -34,7 +34,7 @@ const Navbar = () => {
             to={n.path}
             key={n.id}
             className={({ isActive }) =>
-              `hidden lg:block decoration-2 decoration-primary underline-offset-8 text-[18px] p-2 ${
+              `hidden lg:block decoration-2 decoration-primary underline-offset-8 text-[16px] p-2 ${
                 isActive ? "underline text-primary" : "hover:underline"
               }`
             }

@@ -52,12 +52,12 @@ const MatchDetail = () => {
   // Mock Match event
   const matchTimeline: TimelineItem[] = [
     {
-      id: 0,
+      id: 1,
       type: "divider",
       label: `Fulltime  ${data?.score.fullTime.home} - ${data?.score.fullTime.away}`,
     },
     {
-      id: 1,
+      id: 2,
       type: "event",
       eventType: "substitution",
       minute: "90+’",
@@ -66,7 +66,7 @@ const MatchDetail = () => {
       assist: "Konate",
     },
     {
-      id: 1,
+      id: 3,
       type: "event",
       eventType: "substitution",
       minute: "89’",
@@ -75,7 +75,7 @@ const MatchDetail = () => {
       assist: "Odegard",
     },
     {
-      id: 2,
+      id: 4,
       type: "event",
       eventType: "goal",
       minute: "82’",
@@ -84,7 +84,7 @@ const MatchDetail = () => {
       assist: "Rice",
     },
     {
-      id: 3,
+      id: 5,
       type: "event",
       eventType: "yellow",
       minute: "65’",
@@ -92,7 +92,7 @@ const MatchDetail = () => {
       player: "Konate",
     },
     {
-      id: 4,
+      id: 6,
       type: "event",
       eventType: "red",
       minute: "75’",
@@ -102,7 +102,7 @@ const MatchDetail = () => {
     },
 
     {
-      id: 4,
+      id: 7,
       type: "event",
       eventType: "off-post",
       minute: "55’",
@@ -111,13 +111,13 @@ const MatchDetail = () => {
     },
     // Divider
     {
-      id: 10,
+      id: 8,
       type: "divider",
       label: `Halftime ‘ ${data?.score.halfTime.home} - ${data?.score.halfTime.away}`,
     },
 
     {
-      id: 1,
+      id: 9,
       type: "event",
       eventType: "injury",
       minute: "44’",
@@ -125,7 +125,7 @@ const MatchDetail = () => {
       player: "Trosard",
     },
     {
-      id: 1,
+      id: 10,
       type: "event",
       eventType: "corner",
       minute: "34’",
@@ -133,7 +133,7 @@ const MatchDetail = () => {
       player: "2nd Corner",
     },
     {
-      id: 2,
+      id: 11,
       type: "event",
       eventType: "goal",
       minute: "29’",
@@ -142,7 +142,7 @@ const MatchDetail = () => {
       assist: "Saka",
     },
     {
-      id: 3,
+      id: 12,
       type: "event",
       eventType: "yellow",
       minute: "15’",
@@ -150,7 +150,7 @@ const MatchDetail = () => {
       player: "Salah",
     },
     {
-      id: 3,
+      id: 13,
       type: "event",
       eventType: "corner",
       minute: "15’",
@@ -158,7 +158,7 @@ const MatchDetail = () => {
       player: "1st Corner",
     },
     {
-      id: 3,
+      id: 14,
       type: "event",
       eventType: "corner",
       minute: "7’",
@@ -168,7 +168,7 @@ const MatchDetail = () => {
 
     // Divider
     {
-      id: 11,
+      id: 15,
       type: "divider",
       label: `Kick Off ${formatTime(data ? data.utcDate : "")}`,
     },
@@ -186,10 +186,10 @@ const MatchDetail = () => {
   }
 
   return (
-    <>
+    <div className="md:w-[707px] mx-auto">
       {data && (
         <div className="space-y-4">
-          <div className="bg-card lg:rounded-xl px-4 md:py-2 py-4 space-y-8">
+          <div className="bg-card lg:rounded-t-lg px-4 md:py-2 py-4 space-y-8 border-b border-[#292B41]">
             <div className="flex items-center gap-4">
               <img
                 src={leftArrow}
@@ -239,10 +239,10 @@ const MatchDetail = () => {
                   className="w-[42px] h-[43.45px]"
                 />
                 <div className="absolute top-0 -left-6 w-2.5 h-3 bg-destructive flex items-center justify-center">
-                  <span className="text-black text-[10px]">2</span>
+                  <span className="text-black text-[10px]">1</span>
                 </div>
                 <div className="absolute top-0 -left-3 w-2.5 h-3 bg-[#E7D93F] flex items-center justify-center">
-                  <span className="text-black text-[10px]">2</span>
+                  <span className="text-black text-[10px]">1</span>
                 </div>
                 <p className="text-[11px] md:mt-0 mt-1 md:text-[14px]">
                   {data.awayTeam.shortName}
@@ -254,6 +254,7 @@ const MatchDetail = () => {
             <div className="flex flex-nowrap no-scrollbar overflow-x-scroll md:justify-center items-center gap-4">
               {tabs.map((t) => (
                 <button
+                  key={t}
                   onClick={() => setActiveTab(t)}
                   className={`p-2 text-[12px] md:text-[14px] ${
                     activeTab === t
@@ -282,7 +283,7 @@ const MatchDetail = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
