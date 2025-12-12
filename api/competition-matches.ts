@@ -6,7 +6,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const response = await axios.get(
-      `https://api.example.com/competitions/${competition}/matches`,
+      `https://api.football-data.org/v4/competitions/${competition}/matches`,
       {
         params: { matchday, limit },
         headers: {
