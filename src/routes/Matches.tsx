@@ -103,14 +103,6 @@ const Contact = () => {
 
         {/* Premier League */}
         {pl && <MatchCard data={pl} hasLive />}
-
-        {/* Live and Upcoming Matches Matches */}
-        <div className="rounded-xl bg-card p-4 space-y-3">
-          <div className="flex justify-between">
-            <h1 className="text-[14px]">English Premier League</h1>
-            <ChevronRight className="w-[18px] h-[18px]" />
-          </div>
-        </div>
       </div>
     </div>
   );
