@@ -10,7 +10,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       {
         params: { matchday, limit },
         headers: {
-          "X-Auth-Token": process.env.VITE_ACCESS_TOKEN, // use env variable
+          "X-Auth-Token": "183c3886c11840bf879073760e80bf91", // use env variable
         },
       }
     );
