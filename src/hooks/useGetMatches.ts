@@ -11,7 +11,6 @@ export const getCompetitionDetails = async ({
   matchDay: string;
   limit?: number;
 }): Promise<CompetitionMatchesResponse> => {
-  // Call Vercel serverless function (same origin)
   const res = await axios.get("/api/competition", {
     params: { competition, matchDay, limit },
   });
