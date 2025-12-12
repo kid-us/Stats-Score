@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 
 import { useEffect, useState } from "react";
+import { englandFlag2 } from "@/assets/images";
 
 const Navbar = () => {
   const [selectedLeague, setSelectedLeague] = useState("premier_league");
@@ -76,7 +77,7 @@ const Navbar = () => {
           {/* League Selector */}
           <div className="bg-accent hover:bg-background/80 transition-colors duration-300 hover:border hover:border-zinc-400 ease-in flex items-center justify-center md:w-[206px] lg:h-10 w-6 h-6 md:h-8 rounded-full lg:px-4">
             <img
-              src={englandFlag}
+              src={englandFlag2}
               className="lg:w-4 md:w-5 w-4 lg:h-4 md:h-5 h-4"
               alt="Flag"
             />

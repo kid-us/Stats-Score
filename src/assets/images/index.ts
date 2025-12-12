@@ -5,6 +5,7 @@ import calendar from "./calendar.svg";
 import coloredCalendar from "./colored-calendar.svg";
 import cornerFlag from "./corner-flag.svg";
 import englandFlag from "./england-flag.svg";
+import englandFlag2 from "./england-flag-2.svg";
 import heart from "./heart.svg";
 import injury from "./injury.png";
 import leftArrow from "./leftArrow.svg";
@@ -25,6 +26,7 @@ export {
   coloredCalendar,
   cornerFlag,
   englandFlag,
+  englandFlag2,
   heart,
   injury,
   leftArrow,
