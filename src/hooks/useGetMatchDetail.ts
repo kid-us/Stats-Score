@@ -7,7 +7,8 @@ export const getMatchDetails = async ({
 }: {
   id: string;
 }): Promise<Match> => {
-  const res = await axios.get("/api/match", { params: { id } });
+  const res = await axios.get(`/api/matches/${id}`);
+
   return res.data;
 };
 

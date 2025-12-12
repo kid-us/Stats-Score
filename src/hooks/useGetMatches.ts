@@ -11,9 +11,12 @@ export const getCompetitionDetails = async ({
   matchDay: string;
   limit?: number;
 }): Promise<CompetitionMatchesResponse> => {
-  const res = await axios.get("/api/competition", {
-    params: { competition, matchDay, limit },
-  });
+  const res = await axios.get(
+    `/api/competitions/${competition}/matches`,
+    {
+      params: { matchday: matchDay, limit },
+    }
+  );
 
   return res.data;
 };
