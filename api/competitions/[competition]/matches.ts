@@ -4,8 +4,9 @@ export default async function handler(req: any, res: any) {
   const { competition } = req.query;
   const { matchDay, limit = 5 } = req.query;
 
-  if (!competition || !matchDay)
+  if (!competition || !matchDay) {
     return res.status(400).json({ error: "Missing competition or matchDay" });
+  }
 
   try {
     const token = process.env.VITE_ACCESS_TOKEN;
@@ -17,14 +18,14 @@ export default async function handler(req: any, res: any) {
         params: { matchday: matchDay, limit },
         headers: {
           "X-Auth-Token": token,
-          "Cache-Control": "no-cache",
+          "Cache-Control": "no-cache", // ✅ prevents 304
         },
       }
     );
 
     return res.status(200).json(response.data);
   } catch (error: any) {
-    console.error(error.message);
+    console.error(error.response?.data || error.message);
     return res.status(500).json({ error: "Failed to fetch data" });
   }
 }
