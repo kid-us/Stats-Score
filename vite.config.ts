@@ -45,7 +45,7 @@ import { defineConfig, loadEnv } from "vite";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const apiUrl = env.VITE_API_URL || "http://localhost:3000/api"; // your local API server
+  const apiUrl = env.VITE_API_URL || "http://localhost:3000/api";
   const apiToken = env.VITE_ACCESS_TOKEN;
 
   return {
