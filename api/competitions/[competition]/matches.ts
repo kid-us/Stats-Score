@@ -1,14 +1,13 @@
 import axios from "axios";
 
 export default async function handler(req: any, res: any) {
+  const { competition } = req.query;
+  const { matchDay, limit = 5 } = req.query;
+
+  if (!competition || !matchDay)
+    return res.status(400).json({ error: "Missing competition or matchDay" });
+
   try {
-    const { competition } = req.query;
-    const { matchDay, limit = 5 } = req.query;
-
-    if (!competition || !matchDay) {
-      return res.status(400).json({ error: "Missing competition or matchDay" });
-    }
-
     const token = process.env.VITE_ACCESS_TOKEN;
     const baseUrl = process.env.VITE_API_URL;
 
@@ -18,7 +17,7 @@ export default async function handler(req: any, res: any) {
         params: { matchday: matchDay, limit },
         headers: {
           "X-Auth-Token": token,
-          "Cache-Control": "no-cache", // prevent 304 responses
+          "Cache-Control": "no-cache",
         },
       }
     );

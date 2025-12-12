@@ -1,20 +1,17 @@
 import axios from "axios";
 
 export default async function handler(req: any, res: any) {
+  const { id } = req.query;
+  if (!id) return res.status(400).json({ error: "Missing match id" });
+
   try {
-    const { id } = req.query;
-
-    if (!id) {
-      return res.status(400).json({ error: "Missing match id" });
-    }
-
     const token = process.env.VITE_ACCESS_TOKEN;
     const baseUrl = process.env.VITE_API_URL;
 
     const response = await axios.get(`${baseUrl}/matches/${id}`, {
       headers: {
         "X-Auth-Token": token,
-        "Cache-Control": "no-cache", // prevent 304 responses
+        "Cache-Control": "no-cache",
       },
     });
 
