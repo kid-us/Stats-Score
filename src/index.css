@@ -125,6 +125,10 @@
   --font-inter: "Inter", sans-serif;
 }
 
+@theme {
+  --breakpoint-xl2: 1370px;
+}
+
 :root {
   --radius: 0.625rem;
   --background: #181921;
