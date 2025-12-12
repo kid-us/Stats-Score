@@ -37,7 +37,7 @@ const MatchCard = ({ data, hasLive }: Props) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <img src={manCity} alt="Arsenal" className="w-4 h-4" />
+                  <img src={manCity} alt="Man City" className="w-4 h-4" />
                   <div className="flex gap-2">
                     <p className="text-[12px]">Manchester City</p>
                   </div>
@@ -92,10 +92,13 @@ const MatchCard = ({ data, hasLive }: Props) => {
               <div className="space-y-2 p-2 items-center">
                 <div className="flex items-center gap-2">
                   <img
-                    src={match.homeTeam.crest}
-                    alt="Arsenal"
+                    src={`https://stat-score.kidush.dev/api/image-proxy.php?url=${encodeURIComponent(
+                      match.homeTeam.crest
+                    )}`}
                     className="w-4 h-4"
+                    alt={match.homeTeam.name}
                   />
+
                   <div className="flex gap-2 items-center">
                     <p className="text-[12px]">{match.homeTeam.shortName}</p>
                     {data.competition.code === "CL" &&
@@ -111,9 +114,11 @@ const MatchCard = ({ data, hasLive }: Props) => {
                 </div>
                 <div className="flex items-center gap-2">
                   <img
-                    src={match.awayTeam.crest}
-                    alt="Arsenal"
+                    src={`https://stat-score.kidush.dev/api/image-proxy.php?url=${encodeURIComponent(
+                      match.awayTeam.crest
+                    )}`}
                     className="w-4 h-4"
+                    alt={match.awayTeam.name}
                   />
                   <div className="flex gap-2">
                     <p className="text-[12px]">{match.awayTeam.shortName}</p>

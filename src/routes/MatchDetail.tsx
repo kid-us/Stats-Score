@@ -204,9 +204,11 @@ const MatchDetail = () => {
               {/* Home Team */}
               <div className="flex flex-col justify-center items-center relative">
                 <img
-                  src={data.homeTeam.crest}
-                  alt="Arsenal"
+                  src={`https://stat-score.kidush.dev/api/image-proxy.php?url=${encodeURIComponent(
+                    data.homeTeam.crest
+                  )}`}
                   className="w-[42px] h-[43.45px]"
+                  alt={data.homeTeam.name}
                 />
                 <div className="absolute top-0 -right-3 w-2.5 h-3 bg-[#E7D93F] flex items-center justify-center">
                   <span className="text-black text-[10px]">2</span>
@@ -234,9 +236,11 @@ const MatchDetail = () => {
               {/* Away Team */}
               <div className="flex flex-col justify-center items-center relative">
                 <img
-                  src={data.awayTeam.crest}
-                  alt="Arsenal"
+                  src={`https://stat-score.kidush.dev/api/image-proxy.php?url=${encodeURIComponent(
+                    data.awayTeam.crest
+                  )}`}
                   className="w-[42px] h-[43.45px]"
+                  alt={data.awayTeam.name}
                 />
                 <div className="absolute top-0 -left-6 w-2.5 h-3 bg-destructive flex items-center justify-center">
                   <span className="text-black text-[10px]">1</span>
