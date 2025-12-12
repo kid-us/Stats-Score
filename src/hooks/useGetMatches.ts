@@ -19,7 +19,7 @@ export const getCompetitionDetails = async ({
   //     },
   //   }
   // );
-  const res = await axios.get(`/api/competition-matches`, {
+  const res = await axios.get(`/api/competition`, {
     params: { competition, matchday, limit },
   });
 
